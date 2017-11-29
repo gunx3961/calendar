@@ -71,6 +71,7 @@ const Calendar = createReactClass({
     onChange: PropTypes.func,
     onPanelChange: PropTypes.func,
     disabledDate: PropTypes.func,
+    highlightDate: PropTypes.func,    
     disabledTime: PropTypes.any,
     renderFooter: PropTypes.func,
     renderSidebar: PropTypes.func,
@@ -217,7 +218,7 @@ const Calendar = createReactClass({
     const {
       locale, prefixCls, disabledDate,
       dateInputPlaceholder, timePicker,
-      disabledTime,
+      disabledTime, highlightDate,
     } = props;
     const { value, selectedValue, mode } = state;
     const showTimePicker = mode === 'time';
@@ -291,6 +292,7 @@ const Calendar = createReactClass({
               dateRender={props.dateRender}
               onSelect={this.onDateTableSelect}
               disabledDate={disabledDate}
+              highlightDate={highlightDate}
               showWeekNumber={props.showWeekNumber}
             />
           </div>

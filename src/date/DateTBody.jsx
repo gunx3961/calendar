@@ -34,6 +34,7 @@ const DateTBody = createReactClass({
     contentRender: PropTypes.func,
     dateRender: PropTypes.func,
     disabledDate: PropTypes.func,
+    highlightDate: PropTypes.func,
     prefixCls: PropTypes.string,
     selectedValue: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
     value: PropTypes.object,
@@ -52,7 +53,7 @@ const DateTBody = createReactClass({
     const {
       contentRender, prefixCls, selectedValue, value,
       showWeekNumber, dateRender, disabledDate,
-      hoverValue,
+      hoverValue, highlightDate,
     } = props;
     let iIndex;
     let jIndex;
@@ -67,6 +68,7 @@ const DateTBody = createReactClass({
     const selectedDateClass = `${prefixCls}-selected-date`;  // do not move with mouse operation
     const selectedStartDateClass = `${prefixCls}-selected-start-date`;
     const selectedEndDateClass = `${prefixCls}-selected-end-date`;
+    const highlightClass = `${prefixCls}-highlight-date`;
     const inRangeClass = `${prefixCls}-in-range-cell`;
     const lastMonthDayClass = `${prefixCls}-last-month-cell`;
     const nextMonthDayClass = `${prefixCls}-next-month-btn-day`;
@@ -124,6 +126,7 @@ const DateTBody = createReactClass({
         let cls = cellClass;
         let disabled = false;
         let selected = false;
+        let highlight = false;
 
         if (isSameDay(current, today)) {
           cls += ` ${todayClass}`;
@@ -185,6 +188,10 @@ const DateTBody = createReactClass({
               cls += ` ${lastDisableClass}`;
             }
           }
+        }
+
+        if (highlightDate && highlightDate(current)) {
+          cls += ` ${highlightClass}`
         }
 
         if (selected) {

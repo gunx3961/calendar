@@ -64,6 +64,10 @@ function disabledDate(current) {
   return current.valueOf() < date.valueOf();  // can not select days before today
 }
 
+function highlightDate(current) {
+  return current.get('date') % 3 === 0;
+}
+
 class Demo extends React.Component {
   static propTypes = {
     defaultValue: PropTypes.object,
@@ -118,6 +122,7 @@ class Demo extends React.Component {
       defaultValue={this.props.defaultCalendarValue}
       showDateInput={state.showDateInput}
       disabledDate={disabledDate}
+      highlightDate={highlightDate}
     />);
     return (<div style={{ width: 400, margin: 20 }}>
       <div style={{ marginBottom: 10 }}>
@@ -219,6 +224,7 @@ ReactDOM.render((<div
         onChange={onStandaloneChange}
         disabledDate={disabledDate}
         onSelect={onStandaloneSelect}
+        highlightDate={highlightDate}
       />
     </div>
     <div style={{ float: 'left', width: 300 }}>

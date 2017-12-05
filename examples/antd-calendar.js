@@ -225,6 +225,7 @@ ReactDOM.render((<div
         disabledDate={disabledDate}
         onSelect={onStandaloneSelect}
         highlightDate={highlightDate}
+        value={moment()}
       />
     </div>
     <div style={{ float: 'left', width: 300 }}>

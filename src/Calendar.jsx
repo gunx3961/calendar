@@ -91,6 +91,7 @@ const Calendar = createReactClass({
   getInitialState() {
     return {
       mode: this.props.mode || 'date',
+      selectedValue: this.props.value,
     };
   },
   componentWillReceiveProps(nextProps) {
